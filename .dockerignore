@@ -8,6 +8,9 @@ dist
 #but it's can be removed if it's needed to run tests in CI
 test
 
+#serverless files
+.serverless
+
 #these files are only for the development
 .eslintrc.js
 .gitignore

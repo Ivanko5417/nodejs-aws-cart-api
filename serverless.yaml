@@ -1,0 +1,22 @@
+service: proxy-api
+
+provider:
+  name: aws
+  profile: rsAppAccount
+  runtime: nodejs12.x
+  region:  eu-west-1
+  endpointType: regional
+
+functions:
+  proxy:
+    handler: handler.proxy
+    events:
+      - http:
+          path: /{proxy+}
+          method: any
+          integration: http-proxy
+          request:
+            uri: http://ivanko5417-cart-api-dev.eu-west-1.elasticbeanstalk.com/{proxy}
+            parameters:
+              paths:
+                proxy: true
